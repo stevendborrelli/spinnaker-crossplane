@@ -1,0 +1,68 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: compositenetworks.spinnaker-demo.aws.crossplane.io
+  annotations:
+    upbound.io/ui-schema: |-
+      ---
+      configSections:
+      - title: Network Info
+        description: Information about this network fabric
+        items:
+        - name: name
+          controlType: singleInput
+          type: string
+          path: ".spec.name"
+          title: Network Name
+          description: Network Name that other objects will use to refer (and connect) to this network fabric
+          default: spinnaker-demo
+          validation:
+          - required: true
+            customError: Network Name is required.
+      - title: Cluster Info
+        description: The cluster used with this network fabric
+        items:
+        - name: clusterRef
+          controlType: singleInput
+          type: string
+          path: ".spec.clusterRef.name"
+          title: Cluster Ref
+          description: Name of the Cluster object that will use this network fabric
+          default: spinnaker-demo-cluster
+          validation:
+          - required: true
+            customError: Cluster ref is required.
+spec:
+  claimNames:
+    kind: Network
+    plural: networks
+  group: spinnaker-demo.aws.crossplane.io
+  names:
+    kind: CompositeNetwork
+    plural: compositenetworks
+  versions:
+    - name: v1alpha1
+      served: true
+      referenceable: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The base name of all network resources
+                clusterRef:
+                  type: object
+                  description: "A reference to the Cluster object that this network will be used for."
+                  properties:
+                    name:
+                      type: string
+                      description: Name of the Cluster object this ref points to.
+                  required:
+                    - name
+              required:
+                - name
+                #- clusterRef
