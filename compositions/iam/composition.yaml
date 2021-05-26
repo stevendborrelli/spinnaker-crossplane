@@ -1,0 +1,22 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: compositeiam.spinnaker-demo.aws.crossplane.io
+spec:
+  compositeTypeRef:
+    apiVersion: spinnaker-demo.aws.crossplane.io/v1alpha1
+    kind: CompositeIAMUser
+  resources:
+    - base:
+        apiVersion: identity.aws.crossplane.io/v1alpha1
+        kind: IAMUser
+        spec:
+          forProvider:
+            tags:
+            - key: managed-by
+              value: crossplane
+      patches:
+        - fromFieldPath: spec.name
+          toFieldPath: spec.metadata.name
+        - fromFieldPath: spec.tags
+          toFieldPath: spec.forProvider.tags

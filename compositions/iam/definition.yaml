@@ -1,0 +1,38 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: compositeiamusers.spinnaker-demo.aws.crossplane.io
+spec:
+  group: spinnaker-demo.aws.crossplane.io
+  names:
+    kind: CompositeIAMUser
+    plural: compositeiamusers
+  claimNames:
+    kind: IAMUser
+    plural: iamusers
+  versions:
+  - name: v1alpha1
+    served: true
+    referenceable: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              name:
+                type: string
+              tags:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    key:
+                      type: string
+                    value:
+                      type: string
+            required:
+              - name
+        required:
+          - spec

@@ -1,0 +1,9 @@
+apiVersion: spinnaker-demo.aws.crossplane.io/v1alpha1
+kind: CompositeIAMUser
+metadata:
+  name: spinnaker
+spec:
+  name: spinnaker
+  tags:
+  - key: environment
+    value: spinnaker-demo
