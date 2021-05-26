@@ -1,0 +1,8 @@
+apiVersion: spinnaker-demo.aws.crossplane.io/v1alpha1
+kind: Network
+metadata:
+  name: spinnaker-demo
+spec:
+  name: spinnaker-demo-network
+  clusterRef:
+    name: spinnaker-demo
