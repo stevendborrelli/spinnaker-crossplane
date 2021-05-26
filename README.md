@@ -11,9 +11,9 @@ Please Download the following utilities:
 * The [AWS Cli](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 * [kubectl](https://kubernetes.io/docs/tasks/tools/)
 * (Optional) [Kind](https://kind.sigs.k8s.io/docs/user/quick-start)
-* The [up] CLI from
+* The [up] CLI
 * The [Crossplane Kubectl Plugin](https://crossplane.io/docs/v1.2/getting-started/install-configure.html#install-crossplane-cli)
-* [Helm](https://helm.sh)
+* [Helm](https://helm.sh/docs/intro/install/)
 
 ## Creating a deployment Cluster
 
@@ -130,4 +130,14 @@ spec:
 
 ```shell
 kubectl apply -f examples/providerconfig.yaml
+```
+
+
+## Cleaning Up
+
+
+Finally, delete the kind cluster used to provison the AWS environment:
+
+```shell
+kind delete cluster --name spinnaker-demo
 ```
