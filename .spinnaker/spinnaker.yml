@@ -39,7 +39,6 @@ environments:
           kind: Bucket
           metadata:
             name: borrelli-spinnaker-dev-bucket
-            namespace: dev-env
           spec:
             deletionPolicy: Delete
             forProvider:
@@ -68,7 +67,6 @@ environments:
           kind: Bucket
           metadata:
             name: borrelli-spinnaker-demo-prod
-            namespace: prod-env
           spec:
             deletionPolicy: Delete
             forProvider:
