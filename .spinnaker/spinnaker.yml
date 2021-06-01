@@ -32,17 +32,27 @@ environments:
              app: crossplane-test
     - kind: k8s/resource@v1
       spec:
-        metadata: 
+        metadata:
           application: crossplane-test
         template:
-          apiversion: v1
-          kind: ConfigMap
+          apiVersion: s3.aws.crossplane.io/v1beta1
+          kind: Bucket
           metadata:
-            name: keel-cm-dev
+            name: borrelli-argocd-test-bucket
             namespace: default
-          data:
-            player_initial_lives: "3"
-            ui_properties_file_name: "user-interface.properties"
+          spec:
+            deletionPolicy: Delete
+            forProvider:
+              acl: private
+              locationConstraint: us-west-2
+              accelerateConfiguration:
+                status: Enabled
+              versioningConfiguration:
+                status: Enabled
+              tagging:
+                tagSet:
+                  - key: owner
+                    value: borrelli-spinnaker-demo:
   - name: prod
     locations:
       account: deploy-steven
@@ -59,5 +69,5 @@ environments:
             name: keel-cm
             namespace: default
           data:
-            player_initial_lives: "3"
+            player_initial_lives: "31"
             ui_properties_file_name: "user-interface.properties"
