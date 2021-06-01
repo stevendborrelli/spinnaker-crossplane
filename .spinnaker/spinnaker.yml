@@ -54,6 +54,22 @@ environments:
                     value: borrelli-spinnaker-demo
                   - key: billing-id
                     value: frontend
+    - kind: k8s/resource@v1
+      spec:
+        metadata:
+          application: crossplane-test
+        template:
+          apiversion: aws.platformref.crossplane.io/v1alpha1
+          kind: CompositeNetwork
+          metadata:
+            name: dev-network
+          spec:
+            metadata:
+              name: dev-network
+            spec:
+              name: spinnaker-dev-network
+              clusterRef:
+                name: spinnaker-demo
   - name: prod
     locations:
       account: deploy-steven
