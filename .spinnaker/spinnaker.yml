@@ -30,6 +30,19 @@ environments:
             type: ClusterIP
             selector:
              app: crossplane-test
+    - kind: k8s/resource@v1
+      spec:
+        metadata: 
+          application: crossplane-test
+        template:
+          apiversion: v1
+          kind: ConfigMap
+          metadata:
+            name: keel-cm-dev
+            namespace: default
+          data:
+            player_initial_lives: "3"
+            ui_properties_file_name: "user-interface.properties"
   - name: prod
     locations:
       account: deploy-steven
@@ -38,7 +51,7 @@ environments:
     - kind: k8s/resource@v1
       spec:
         metadata: 
-          application: crossplanedemo
+          application: crossplane-test
         template:
           apiversion: v1
           kind: ConfigMap
