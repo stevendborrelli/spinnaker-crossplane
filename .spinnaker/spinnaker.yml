@@ -31,7 +31,7 @@ environments:
             selector:
              app: crossplane-test
   - name: prod
-      locations:
+    locations:
       account: deploy-steven
       regions: []
     resources:
@@ -45,6 +45,6 @@ environments:
           metadata:
             name: keel-cm
             namespace: default
-          data:
+          data:1
             player_initial_lives: "3"
             ui_properties_file_name: "user-interface.properties"
