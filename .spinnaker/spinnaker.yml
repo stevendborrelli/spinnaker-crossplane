@@ -52,7 +52,7 @@ environments:
               tagging:
                 tagSet:
                   - key: owner
-                    value: borrelli-spinnaker-demo:
+                    value: borrelli-spinnaker-demo
   - name: prod
     locations:
       account: deploy-steven
