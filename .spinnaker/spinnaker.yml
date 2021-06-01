@@ -35,6 +35,19 @@ environments:
         metadata:
           application: crossplane-test
         template:
+          apiVersion: sqs.aws.crossplane.io/v1beta1
+          kind: Queue
+          metadata:
+            name: dev-queue
+          spec:
+            forProvider:
+              region: us-west-2
+              delaySeconds: 4
+    - kind: k8s/resource@v1
+      spec:
+        metadata:
+          application: crossplane-test
+        template:
           apiVersion: s3.aws.crossplane.io/v1beta1
           kind: Bucket
           metadata:
