@@ -21,7 +21,7 @@ environments:
           kind: Service
           metadata:
             name: crossplane-test
-            namespace: default
+            namespace: dev-env
           spec:
             ports:
             - port: 8080
@@ -38,8 +38,8 @@ environments:
           apiVersion: s3.aws.crossplane.io/v1beta1
           kind: Bucket
           metadata:
-            name: borrelli-spinnaker-demo-bucket
-            namespace: default
+            name: borrelli-spinnaker-dev-bucket
+            namespace: dev-env
           spec:
             deletionPolicy: Delete
             forProvider:
@@ -68,7 +68,7 @@ environments:
           kind: Bucket
           metadata:
             name: borrelli-spinnaker-demo-prod
-            namespace: default
+            namespace: prod-env
           spec:
             deletionPolicy: Delete
             forProvider:
