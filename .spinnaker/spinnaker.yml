@@ -59,7 +59,8 @@ environments:
       account: deploy-steven
       regions: []
     resources:
-    spec:
+    - kind: k8s/resource@v1
+      spec:
         metadata:
           application: crossplane-test
         template:
