@@ -16,3 +16,5 @@ spec:
       tagSet:
         - key: owner
           value: borrelli-argocd-demo
+        - key: test
+          value: webhook
