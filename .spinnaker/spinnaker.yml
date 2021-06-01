@@ -60,16 +60,27 @@ environments:
       account: deploy-steven
       regions: []
     resources:
-    - kind: k8s/resource@v1
-      spec:
-        metadata: 
+    spec:
+        metadata:
           application: crossplane-test
         template:
-          apiversion: v1
-          kind: ConfigMap
+          apiVersion: s3.aws.crossplane.io/v1beta1
+          kind: Bucket
           metadata:
-            name: keel-cm
+            name: borrelli-spinnaker-demo-prod
             namespace: default
-          data:
-            player_initial_lives: "31"
-            ui_properties_file_name: "user-interface.properties"
+          spec:
+            deletionPolicy: Delete
+            forProvider:
+              acl: private
+              locationConstraint: us-west-2
+              accelerateConfiguration:
+                status: Enabled
+              versioningConfiguration:
+                status: Enabled
+              tagging:
+                tagSet:
+                  - key: owner
+                    value: borrelli-spinnaker-demo
+                  - key: billing-id
+                    value: frontend
