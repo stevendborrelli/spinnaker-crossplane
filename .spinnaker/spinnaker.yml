@@ -1,6 +1,6 @@
 name: test1
-application: ledemo
-serviceAccount: keeltest-service-account
+application: crossplanedemo
+serviceAccount: keeldemo-service-account
 #artifacts:
 #- name: nabuskey/led-demo
 #  type: docker
