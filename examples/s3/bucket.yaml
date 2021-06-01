@@ -16,5 +16,3 @@ spec:
       tagSet:
         - key: owner
           value: borrelli-argocd-demo
-        - key: hello
-          value: there
