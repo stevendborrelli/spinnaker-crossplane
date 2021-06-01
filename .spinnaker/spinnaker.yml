@@ -64,12 +64,9 @@ environments:
           metadata:
             name: dev-network
           spec:
-            metadata:
-              name: dev-network
-            spec:
-              name: spinnaker-dev-network
-              clusterRef:
-                name: spinnaker-demo
+            id: spinnaker-dev-network
+            clusterRef:
+              id: spinnaker-dev
   - name: prod
     locations:
       account: deploy-steven
