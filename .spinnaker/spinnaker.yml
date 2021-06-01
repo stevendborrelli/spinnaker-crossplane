@@ -1,7 +1,7 @@
 name: first-pipeline
 application: crossplanedemo
 serviceAccount: keeldemo-service-account
-#artifacts:
+artifacts:
 - name: nabuskey/led-demo
   type: docker
   reference: my-docker-artifact
