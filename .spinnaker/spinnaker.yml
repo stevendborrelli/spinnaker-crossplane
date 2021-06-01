@@ -21,7 +21,7 @@ environments:
           kind: Service
           metadata:
             name: crossplane-test
-            namespace: test
+            namespace: default
           spec:
             ports:
             - port: 8080
@@ -30,3 +30,21 @@ environments:
             type: ClusterIP
             selector:
              app: crossplane-test
+  - name: prod
+      locations:
+      account: deploy-steven
+      regions: []
+    resources:
+    - kind: k8s/resource@v1
+      spec:
+        metadata: 
+          application: crossplanedemo
+        template:
+          apiversion: v1
+          kind: ConfigMap
+          metadata:
+            name: keel-cm
+            namespace: default
+          data:
+            player_initial_lives: "3"
+            ui_properties_file_name: "user-interface.properties"
