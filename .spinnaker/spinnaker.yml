@@ -38,7 +38,7 @@ environments:
           apiVersion: s3.aws.crossplane.io/v1beta1
           kind: Bucket
           metadata:
-            name: borrelli-argocd-test-bucket
+            name: borrelli-spinnaker-demo-bucket
             namespace: default
           spec:
             deletionPolicy: Delete
