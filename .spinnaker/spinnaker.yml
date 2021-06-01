@@ -2,31 +2,31 @@ name: first-pipeline
 application: crossplanedemo
 serviceAccount: keeldemo-service-account
 #artifacts:
-#- name: nabuskey/led-demo
-#  type: docker
-#  reference: my-docker-artifact
-#  tagVersionStrategy: increasing-tag
+- name: nabuskey/led-demo
+  type: docker
+  reference: my-docker-artifact
+  tagVersionStrategy: increasing-tag
 environments:
   - name: dev
     locations:
       account: deploy-experiments
       regions: []
     resources:
-#    - kind: k8s/resource@v1
-#      spec:
-#        metadata:
-#          application: ledemo
-#        template:
-#          apiVersion: v1
-#          kind: Service
-#          metadata:
-#            name: ledemo
-#            namespace: test
-#          spec:
-#            ports:
-#            - port: 8080
-#              protocol: TCP
-#              targetPort: 4000
-#            type: ClusterIP
-#            selector:
-#              app: ledemo
+    - kind: k8s/resource@v1
+      spec:
+        metadata:
+         application: crossplane-test
+        template:
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: crossplane-test
+            namespace: test
+          spec:
+            ports:
+            - port: 8080
+              protocol: TCP
+              targetPort: 4000
+            type: ClusterIP
+            selector:
+             app: crossplane-test
