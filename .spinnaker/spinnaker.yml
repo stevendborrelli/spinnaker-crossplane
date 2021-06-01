@@ -53,6 +53,8 @@ environments:
                 tagSet:
                   - key: owner
                     value: borrelli-spinnaker-demo
+                  - key: billing-id
+                    value: frontend
   - name: prod
     locations:
       account: deploy-steven
