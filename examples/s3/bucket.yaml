@@ -1,0 +1,20 @@
+apiVersion: s3.aws.crossplane.io/v1beta1
+kind: Bucket
+metadata:
+  name: borrelli-argocd-test-bucket
+  namespace: default
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    acl: private
+    locationConstraint: us-west-2
+    accelerateConfiguration:
+      status: Enabled
+    versioningConfiguration:
+      status: Enabled
+    tagging:
+      tagSet:
+        - key: owner
+          value: borrelli-argocd-demo
+        - key: hello
+          value: there
