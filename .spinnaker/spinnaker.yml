@@ -59,7 +59,7 @@ environments:
         metadata:
           application: crossplane-test
         template:
-          apiversion: aws.platformref.crossplane.io/v1alpha1
+          apiVersion: aws.platformref.crossplane.io/v1alpha1
           kind: CompositeNetwork
           metadata:
             name: dev-network
