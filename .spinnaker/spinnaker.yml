@@ -9,7 +9,7 @@ artifacts:
 environments:
   - name: dev
     locations:
-      account: deploy-experiments
+      account: deploy-steven
       regions: []
     resources:
     - kind: k8s/resource@v1
