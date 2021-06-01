@@ -45,6 +45,6 @@ environments:
           metadata:
             name: keel-cm
             namespace: default
-          data:1
+          data:
             player_initial_lives: "3"
             ui_properties_file_name: "user-interface.properties"
