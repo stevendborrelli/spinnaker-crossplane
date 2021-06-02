@@ -1,0 +1,17 @@
+name: first-pipeline
+application: crossplanedemo
+serviceAccount: keeldemo-service-account
+artifacts:
+- name: nabuskey/led-demo
+  type: docker
+  reference: my-docker-artifact
+  tagVersionStrategy: increasing-tag
+environments:
+  - name: dev
+    locations:
+      account: deploy-steven
+      regions: []
+  - name: prod
+    locations:
+      account: deploy-steven
+      regions: []
