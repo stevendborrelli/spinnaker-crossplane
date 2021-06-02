@@ -86,7 +86,7 @@ environments:
           application: crossplane-test
         template:
           apiVersion: aws.platformref.crossplane.io/v1alpha1
-          kind: ComposteCluster
+          kind: CompositeCluster
           metadata:
             name: spinnaker-dev-k8s
           spec:
