@@ -67,6 +67,42 @@ environments:
                     value: borrelli-spinnaker-demo
                   - key: billing-id
                     value: frontend
+    - kind: k8s/resource@v1
+      spec:
+        metadata:
+          application: crossplane-test
+        template:
+          apiVersion: aws.platformref.crossplane.io/v1alpha1
+          kind: CompositeNetwork
+          metadata:
+            name: dev-network
+          spec:
+            id: spinnaker-dev-network
+            clusterRef:
+              id: spinnaker-dev
+    - kind: k8s/resource@v1
+      spec:
+        metadata:
+          application: crossplane-test
+        template:
+          apiVersion: aws.platformref.crossplane.io/v1alpha1
+          kind: Cluster
+          metadata:
+            name: spinnaker-dev-k8s
+          spec:
+            id: spinnaker-dev-k8s
+            parameters:
+              nodes:
+                count: 3
+                size: small
+              services:
+                operators:
+                  prometheus:
+                    version: "10.0.2"
+              networkRef:
+                id: spinnaker-dev-network
+            writeConnectionSecretToRef:
+              name: platform-ref-aws-cluster
   - name: prod
     locations:
       account: deploy-steven
