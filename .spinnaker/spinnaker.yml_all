@@ -79,14 +79,14 @@ environments:
           spec:
             id: spinnaker-dev-network
             clusterRef:
-              id: spinnaker-dev
+              id: spinnaker-dev-k8s
     - kind: k8s/resource@v1
       spec:
         metadata:
           application: crossplane-test
         template:
           apiVersion: aws.platformref.crossplane.io/v1alpha1
-          kind: Cluster
+          kind: CompositeCluster
           metadata:
             name: spinnaker-dev-k8s
           spec:
@@ -102,7 +102,8 @@ environments:
               networkRef:
                 id: spinnaker-dev-network
             writeConnectionSecretToRef:
-              name: platform-ref-aws-cluster
+              name: spinnaker-dev-k8s-kubeconfig
+              namespace: dev-env
   - name: prod
     locations:
       account: deploy-steven
