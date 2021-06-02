@@ -103,6 +103,7 @@ environments:
                 id: spinnaker-dev-network
             writeConnectionSecretToRef:
               name: spinnaker-dev-k8s-kubeconfig
+              namespace: dev-env
   - name: prod
     locations:
       account: deploy-steven
