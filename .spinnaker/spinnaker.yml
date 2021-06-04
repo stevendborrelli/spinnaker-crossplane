@@ -11,7 +11,22 @@ environments:
     locations:
       account: deploy-steven
       regions: []
-  - name: prod
-    locations:
-      account: deploy-steven
-      regions: []
+    resources:
+    - kind: k8s/resource@v1
+      spec:
+        metadata:
+         application: crossplane-test
+        template:
+          apiVersion: v1
+          kind: Service
+          metadata:
+            name: crossplane-test
+            namespace: dev-env
+          spec:
+            ports:
+            - port: 8080
+              protocol: TCP
+              targetPort: 4000
+            type: ClusterIP
+            selector:
+             app: crossplane-test
